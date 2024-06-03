@@ -705,6 +705,11 @@ void DW1000RangingClass::handleSent() {
 }
 
 void DW1000RangingClass::handleReceived() {
+	//if received frame is corrupt, ignore it
+	if(DW1000.isReceiveFailed()){
+		return;
+	}
+
 	// status change on received success
 	_receivedAck = true;
 }
